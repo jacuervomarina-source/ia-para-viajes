@@ -65,8 +65,8 @@
 <script>
     const stripe = Stripe('pk_test_51TFIifCBsoGcOpWkZVwUn5gWJVQhhwhdWHIEbBhT62YLAvpcAdEOILCOi8WNSossvNHjeqDgAufWCd7piLGdqOTY00JwoyLaft');
     // ↓↓↓ ЗАМЕНИТЕ НА ВАШИ PRICE ID ИЗ STRIPE ↓↓↓
-    const monthlyPriceId = 'prod_UDlrsmKZUnoeSx';
-    const yearlyPriceId = 'prod_UDlv2U4EFrG2ht';
+    const monthlyPriceId = 'price_1TFKJnCQi5mHgKoeUrBM032t';
+    const yearlyPriceId = 'price_1TFKNICQi5mHgKoeBHmjYgPp';
 
     document.getElementById('checkout-monthly').addEventListener('click', () => {
         stripe.redirectToCheckout({
