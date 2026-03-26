@@ -32,19 +32,19 @@
     </div>
 
     <div class="pricing">
-        <div class="card">
-            <h3>Mensual</h3>
-            <div class="price">$99 <small>MXN / mes</small></div>
-            <p>Acceso a todos los videos<br>+ comunidad Telegram privada</p>
-            <button class="btn" id="checkout-monthly">Suscribirme</button>
-        </div>
-        <div class="card">
-            <h3>Anual</h3>
-            <div class="price">$990 <small>MXN / año</small></div>
-            <p>Ahorra 2 meses<br>+ contenido exclusivo</p>
-            <button class="btn" id="checkout-yearly">Suscribirme anual</button>
-        </div>
+    <div class="card">
+        <h3>Mensual</h3>
+        <div class="price">$99 <small>MXN / mes</small></div>
+        <p>Acceso a todos los videos<br>+ comunidad Telegram privada</p>
+        <a href="https://buy.stripe.com/test_bJe5kCaB06QR2iDbko4F201" target="_blank" class="btn">Suscribirme</a>
     </div>
+    <div class="card">
+        <h3>Anual</h3>
+        <div class="price">$990 <small>MXN / año</small></div>
+        <p>Ahorra 2 meses<br>+ contenido exclusivo</p>
+        <a href="https://buy.stripe.com/test_eVq28qcJ81wx7CX3RW4F200" target="_blank" class="btn">Suscribirme anual</a>
+    </div>
+</div>
 
     <div class="features">
         <h3>✅ Qué incluye tu suscripción:</h3>
@@ -62,29 +62,29 @@
     </footer>
 </div>
 
-<script>
-    const stripe = Stripe('pk_test_51TFIiRCQi5mHgKoegjqIrb7dMawEFVQnDsPVbruWEtGGlU5TeUhWlXxSkoNeu7NRW9nypWYANZM5qYjehf3NIU5500wCe8yXhn');
-    // ↓↓↓ ЗАМЕНИТЕ НА ВАШИ PRICE ID ИЗ STRIPE ↓↓↓
-    const monthlyPriceId = 'price_1TFKJnCQi5mHgKoeUrBM032t';
-    const yearlyPriceId = 'price_1TFKNICQi5mHgKoeBHmjYgPp';
+// <script>
+//    const stripe = Stripe('pk_test_51TFIiRCQi5mHgKoegjqIrb7dMawEFVQnDsPVbruWEtGGlU5TeUhWlXxSkoNeu7NRW9nypWYANZM5qYjehf3NIU5500wCe8yXhn');
+//    // ↓↓↓ ЗАМЕНИТЕ НА ВАШИ PRICE ID ИЗ STRIPE ↓↓↓
+//    const monthlyPriceId = 'price_1TFKJnCQi5mHgKoeUrBM032t';
+//    const yearlyPriceId = 'price_1TFKNICQi5mHgKoeBHmjYgPp';
 
-    document.getElementById('checkout-monthly').addEventListener('click', () => {
-        stripe.redirectToCheckout({
-            lineItems: [{ price: monthlyPriceId, quantity: 1 }],
-            mode: 'subscription',
-            successUrl: window.location.origin + '/gracias.html',
-            cancelUrl: window.location.origin + '/cancel.html',
-        });
-    });
+//    document.getElementById('checkout-monthly').addEventListener('click', () => {
+//        stripe.redirectToCheckout({
+//            lineItems: [{ price: monthlyPriceId, quantity: 1 }],
+//            mode: 'subscription',
+//            successUrl: window.location.origin + '/gracias.html',
+//            cancelUrl: window.location.origin + '/cancel.html',
+//        });
+//    });
 
-    document.getElementById('checkout-yearly').addEventListener('click', () => {
-        stripe.redirectToCheckout({
-            lineItems: [{ price: yearlyPriceId, quantity: 1 }],
-            mode: 'subscription',
-            successUrl: window.location.origin + '/gracias.html',
-            cancelUrl: window.location.origin + '/cancel.html',
-        });
-    });
-</script>
+//    document.getElementById('checkout-yearly').addEventListener('click', () => {
+//        stripe.redirectToCheckout({
+//            lineItems: [{ price: yearlyPriceId, quantity: 1 }],
+//            mode: 'subscription',
+//            /successUrl: window.location.origin + '/gracias.html',
+//            cancelUrl: window.location.origin + '/cancel.html',
+//        });
+//    });
+// </script>
 </body>
 </html>
