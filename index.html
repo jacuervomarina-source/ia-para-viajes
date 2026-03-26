@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IA para Viajes y Turismo</title>
+    <script src="https://js.stripe.com/v3/"></script>
+    <style>
+        body { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; margin: 0; padding: 0; background: #f5f7fb; color: #1e293b; line-height: 1.5; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem 1rem; }
+        .hero { text-align: center; padding: 3rem 1rem; background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; border-radius: 1.5rem; margin-bottom: 2rem; }
+        .hero h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .hero p { font-size: 1.25rem; opacity: 0.9; }
+        .pricing { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem; }
+        .card { background: white; border-radius: 1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.05); padding: 2rem; width: 280px; text-align: center; transition: transform 0.2s; }
+        .card:hover { transform: translateY(-5px); }
+        .price { font-size: 2rem; font-weight: bold; color: #0f172a; margin: 1rem 0; }
+        .price small { font-size: 0.875rem; font-weight: normal; color: #64748b; }
+        .btn { background: #3b82f6; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 2rem; font-size: 1rem; cursor: pointer; transition: background 0.2s; width: 100%; margin-top: 1rem; }
+        .btn:hover { background: #2563eb; }
+        .features { max-width: 800px; margin: 3rem auto; text-align: left; }
+        .features li { margin: 0.5rem 0; }
+        footer { text-align: center; margin-top: 3rem; font-size: 0.875rem; color: #64748b; }
+        a { color: #3b82f6; text-decoration: none; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="hero">
+        <h1>🤖 IA para Viajes y Turismo</h1>
+        <p>Noticias diarias + herramientas de inteligencia artificial para viajeros y agentes de viajes en México</p>
+    </div>
+
+    <div class="pricing">
+        <div class="card">
+            <h3>Mensual</h3>
+            <div class="price">$99 <small>MXN / mes</small></div>
+            <p>Acceso a todos los videos<br>+ comunidad Telegram privada</p>
+            <button class="btn" id="checkout-monthly">Suscribirme</button>
+        </div>
+        <div class="card">
+            <h3>Anual</h3>
+            <div class="price">$990 <small>MXN / año</small></div>
+            <p>Ahorra 2 meses<br>+ contenido exclusivo</p>
+            <button class="btn" id="checkout-yearly">Suscribirme anual</button>
+        </div>
+    </div>
+
+    <div class="features">
+        <h3>✅ Qué incluye tu suscripción:</h3>
+        <ul>
+            <li>🎥 Video diario con las últimas novedades de IA para viajes</li>
+            <li>📱 Acceso a nuestro canal privado de Telegram con contenido extra</li>
+            <li>🔧 Herramientas y prompts exclusivos para agencias de viajes</li>
+            <li>🌎 Enfoque en México y Latinoamérica</li>
+        </ul>
+    </div>
+
+    <footer>
+        <p><a href="aviso-privacidad.html">Aviso de Privacidad</a> | <a href="terminos.html">Términos y Condiciones</a></p>
+        <p>© 2026 IA para Viajes y Turismo — RESICO México</p>
+    </footer>
+</div>
+
+<script>
+    const stripe = Stripe('pk_test_51TFIifCBsoGcOpWkZVwUn5gWJVQhhwhdWHIEbBhT62YLAvpcAdEOILCOi8WNSossvNHjeqDgAufWCd7piLGdqOTY00JwoyLaft');
+    // ↓↓↓ ЗАМЕНИТЕ НА ВАШИ PRICE ID ИЗ STRIPE ↓↓↓
+    const monthlyPriceId = 'prod_UDlrsmKZUnoeSx';
+    const yearlyPriceId = 'prod_UDlv2U4EFrG2ht';
+
+    document.getElementById('checkout-monthly').addEventListener('click', () => {
+        stripe.redirectToCheckout({
+            lineItems: [{ price: monthlyPriceId, quantity: 1 }],
+            mode: 'subscription',
+            successUrl: window.location.origin + '/gracias.html',
+            cancelUrl: window.location.origin + '/cancel.html',
+        });
+    });
+
+    document.getElementById('checkout-yearly').addEventListener('click', () => {
+        stripe.redirectToCheckout({
+            lineItems: [{ price: yearlyPriceId, quantity: 1 }],
+            mode: 'subscription',
+            successUrl: window.location.origin + '/gracias.html',
+            cancelUrl: window.location.origin + '/cancel.html',
+        });
+    });
+</script>
+</body>
+</html>
